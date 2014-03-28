@@ -27,22 +27,43 @@ var Slider;
 		var handlerName = container.getAttribute("event:onslideend");
 
 		var callback = Helper.parseCallbackFunction(handlerName);
-		callback && callback();
+		callback && callback();	
 
-		var svgTemplate = sliderTemplate.replace(/{width}/g, width).replace(/{start}/g, start);
-		container.innerHTML = svgTemplate;
+		var renderControl = function () {
+			var svgTemplate = sliderTemplate.replace(/{width}/g, width).replace(/{start}/g, start);
+			container.innerHTML = svgTemplate;
+		}
 
-		var pointer = container.getElementsByTagName("circle")[0];
-		pointer.addEventListener("mousemove", function(evt) {
-			console.debug(pointer.getAttribute("transform") + "," + evt.pageX);
-			pointer.setAttribute("transform", "translate(" + evt.pageX + ", 0)");
-			slideMoveCallback && slideMoveCallback(); 
-		});
+		var setUpMouseEvents = function () {
+			var isPointerAttached = false;
 
-		pointer.addEventListener("mouseend", function(evt) {
+			var pointer = container.getElementsByTagName("circle")[0];
 
-			slideEndCallback && slideEndCallback(); 
-		});
+			pointer.addEventListener("mousedown", function () {
+				isPointerAttached = true;
+			})
+
+			pointer.addEventListener("mouseup", function () {
+				isPointerAttached = false;
+			})
+
+			pointer.addEventListener("mousemove", function(evt) {
+				if (isPointerAttached)
+				{
+					console.debug(evt.pageX);
+					pointer.setAttribute("transform", "translate(" + evt.pageX + ", 0)");
+					//pointer.setAttribute("x", evt.pageX);
+					slideMoveCallback && slideMoveCallback(); 
+				}
+			});
+
+			pointer.addEventListener("mousemoveend", function(evt) {
+				slideEndCallback && slideEndCallback(); 
+			});
+		}
+
+		renderControl();
+		setUpMouseEvents();
 	}
 
 	Slider.createSliderControl = createSliderControl;
