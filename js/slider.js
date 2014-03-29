@@ -1,8 +1,8 @@
 var Slider;
 (function (Slider) {
-	var sliderTemplate = '<svg width="{width}" height="20">';
-	sliderTemplate += '<line x1="0" y1="5" x2="{width}" y2="5" stroke="black" stroke-width="2"/>';
-	sliderTemplate += '<circle cx="{start}" cy="5" r="4"></svg>';
+	var sliderTemplate = '<svg width="{width}" height="{height}">';
+	sliderTemplate += '<line x1="0" y1="{radius}" x2="{width}" y2="{radius}" stroke="black" stroke-width="2"/>';
+	sliderTemplate += '<circle cx="{start}" cy="{radius}" r="{radius}" style="fill:red;"></svg>';
 
 	var createSliderControl = function (container) {
 		var label = container.getAttribute("data-label");
@@ -10,6 +10,8 @@ var Slider;
 		var maxVal = container.getAttribute("data-max");
 		var width = container.getAttribute("data-width");
 		var start = container.getAttribute("data-start");
+		var options = container.getAttribute("data-options");
+		var pointerRadius = parseInt(container.getAttribute("data-pointerRadius")) || 4;
 
 		var handlerName = container.getAttribute("event:onslideend");
 		var slideEndCallback = Helper.parseCallbackFunction(handlerName);
@@ -30,7 +32,10 @@ var Slider;
 		callback && callback();	
 
 		var renderControl = function () {
-			var svgTemplate = sliderTemplate.replace(/{width}/g, width).replace(/{start}/g, start);
+			var svgTemplate = sliderTemplate.replace(/{width}/g, width)
+											.replace(/{height}/g, pointerRadius * 2)
+											.replace(/{start}/g, start)
+											.replace(/{radius}/g, pointerRadius);
 			container.innerHTML = svgTemplate;
 		}
 
@@ -38,6 +43,8 @@ var Slider;
 			var isPointerAttached = false;
 
 			var pointer = container.getElementsByTagName("circle")[0];
+
+			var svg = container.getElementsByTagName("svg")[0];
 
 			pointer.addEventListener("mousedown", function () {
 				isPointerAttached = true;
@@ -47,11 +54,14 @@ var Slider;
 				isPointerAttached = false;
 			})
 
-			pointer.addEventListener("mousemove", function(evt) {
+			svg.addEventListener("mousemove", function(evt) {
 				if (isPointerAttached)
 				{
 					console.debug(evt.pageX);
-					pointer.setAttribute("transform", "translate(" + evt.pageX + ", 0)");
+					var startX = pointer.getAttribute("x") || pointer.getAttribute("cx");
+					var dx = evt.pageX - parseInt(startX);
+					pointer.setAttribute("transform", "translate(" + dx+ ", 0)");
+					pointer.setAttribute("x", dx);
 					//pointer.setAttribute("x", evt.pageX);
 					slideMoveCallback && slideMoveCallback(); 
 				}
