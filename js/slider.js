@@ -23,15 +23,6 @@ var Slider;
 		handlerName = container.getAttribute("event:onslidestart");
 		var slideStartCallback = Helper.parseCallbackFunction(handlerName);
 
-		console.debug("creating " + container.getAttribute("data-label"));
-		console.debug(typeof window[container.getAttribute("event:onslideend")]);
-
-
-		var handlerName = container.getAttribute("event:onslideend");
-
-		var callback = Helper.parseCallbackFunction(handlerName);
-		callback && callback();	
-
 		var renderControl = function () {
 			var svgTemplate = sliderTemplate.replace(/{width}/g, width)
 											.replace(/{height}/g, pointerRadius * 2)
