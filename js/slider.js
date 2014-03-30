@@ -7,12 +7,12 @@ var Slider;
 
 	var createSliderControl = function (container) {
 		var label = container.getAttribute("data-label");
-		var minVal = container.getAttribute("data-min");
-		var maxVal = container.getAttribute("data-max");
-		var width = container.getAttribute("data-width");
-		var start = container.getAttribute("data-start");
+		var minVal = container.getAttribute("data-min") || 0;
+		var maxVal = container.getAttribute("data-max") || 10;
+		var width = container.getAttribute("data-width") || 100;
+		var start = container.getAttribute("data-start") || 0;
 		var options = container.getAttribute("data-options");
-		var pointerRadius = parseInt(container.getAttribute("data-pointerRadius")) || 4;
+		var pointerRadius = parseInt(container.getAttribute("data-pointerRadius")) || 6;
 
 		var handlerName = container.getAttribute("event:onslideend");
 		var slideEndCallback = Helper.parseCallbackFunction(handlerName);
@@ -52,8 +52,12 @@ var Slider;
 			var mousemoveHandler = function (evt) {				
 				var startX = pointer.getAttribute("cx");
 				var dx = evt.pageX - parseInt(startX) - pointerRadius;
-				pointer.setAttribute("transform", "translate(" + dx + ", 0)");
-				slideMoveCallback && slideMoveCallback();				
+				var truePosition = dx + parseInt(start);
+				if (truePosition >= 0 && truePosition <= width)
+				{
+					pointer.setAttribute("transform", "translate(" + dx + ", 0)");
+					slideMoveCallback && slideMoveCallback();				
+				}				
 			};
 
 			var mouseupHandler = function () {
@@ -61,7 +65,6 @@ var Slider;
 				slideEndCallback && slideEndCallback();
 				document.removeEventListener("mousemove", mousemoveHandler);
 				document.removeEventListener("mouseup", mouseupHandler);
-				console.debug(maxVal);
 			}
 
 			pointer.addEventListener("mousedown", mousedownHandler);			
