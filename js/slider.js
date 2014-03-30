@@ -1,4 +1,5 @@
 var Slider;
+
 (function (Slider) {
 	var sliderTemplate = '<svg width="{width}" height="{height}">';
 	sliderTemplate += '<line x1="0" y1="{radius}" x2="{width}" y2="{radius}" stroke="black" stroke-width="2"/>';
@@ -37,40 +38,34 @@ var Slider;
 											.replace(/{start}/g, start)
 											.replace(/{radius}/g, pointerRadius);
 			container.innerHTML = svgTemplate;
-		}
+		};
 
 		var setUpMouseEvents = function () {
-			var isPointerAttached = false;
-
 			var pointer = container.getElementsByTagName("circle")[0];
-
 			var svg = container.getElementsByTagName("svg")[0];
 
-			pointer.addEventListener("mousedown", function () {
-				isPointerAttached = true;
-			})
+			var mousedownHandler = function () {
+				document.addEventListener("mouseup", mouseupHandler);
+				document.addEventListener("mousemove", mousemoveHandler);			
+			};
 
-			pointer.addEventListener("mouseup", function () {
+			var mousemoveHandler = function (evt) {				
+				var startX = pointer.getAttribute("cx");
+				var dx = evt.pageX - parseInt(startX) - pointerRadius;
+				pointer.setAttribute("transform", "translate(" + dx + ", 0)");
+				slideMoveCallback && slideMoveCallback();				
+			};
+
+			var mouseupHandler = function () {
 				isPointerAttached = false;
-			})
+				slideEndCallback && slideEndCallback();
+				document.removeEventListener("mousemove", mousemoveHandler);
+				document.removeEventListener("mouseup", mouseupHandler);
+				console.debug(maxVal);
+			}
 
-			svg.addEventListener("mousemove", function(evt) {
-				if (isPointerAttached)
-				{
-					console.debug(evt.pageX);
-					var startX = pointer.getAttribute("x") || pointer.getAttribute("cx");
-					var dx = evt.pageX - parseInt(startX);
-					pointer.setAttribute("transform", "translate(" + dx+ ", 0)");
-					pointer.setAttribute("x", dx);
-					//pointer.setAttribute("x", evt.pageX);
-					slideMoveCallback && slideMoveCallback(); 
-				}
-			});
-
-			pointer.addEventListener("mousemoveend", function(evt) {
-				slideEndCallback && slideEndCallback(); 
-			});
-		}
+			pointer.addEventListener("mousedown", mousedownHandler);			
+		};
 
 		renderControl();
 		setUpMouseEvents();
@@ -85,9 +80,9 @@ var Slider;
 
 	var init = function () {
 		slidersOnPage = document.querySelectorAll("div[data-control=slider]");
-		console.debug(slidersOnPage.length);
 
-		for (var i = 0; i < slidersOnPage.length; i++) {
+		var numSliders = slidersOnPage.length;
+		for (var i = 0; i < numSliders; i++) {
 			Slider.createSliderControl(slidersOnPage[i]);
 		}
 	}
