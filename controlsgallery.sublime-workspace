@@ -4,6 +4,30 @@
 		"selected_items":
 		[
 			[
+				"sta",
+				"startX"
+			],
+			[
+				"po",
+				"pointer"
+			],
+			[
+				"get",
+				"getAttribute"
+			],
+			[
+				"pinter",
+				"pointerRadius"
+			],
+			[
+				"pointer",
+				"pointerRadius"
+			],
+			[
+				"poi",
+				"pointerRadius"
+			],
+			[
 				"ac",
 				"acsBase"
 			],
@@ -18,10 +42,6 @@
 			[
 				"crea",
 				"createElement"
-			],
-			[
-				"get",
-				"getSf1Base"
 			],
 			[
 				"var",
@@ -47,6 +67,22 @@
 	},
 	"buffers":
 	[
+		{
+			"file": "index.html",
+			"settings":
+			{
+				"buffer_size": 1364,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/slider.js",
+			"settings":
+			{
+				"buffer_size": 3123,
+				"line_ending": "Unix"
+			}
+		}
 	],
 	"build_system": "",
 	"command_palette":
@@ -85,7 +121,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 93.0,
+		"height": 0.0,
 		"where_history":
 		[
 			"/Users/hoon/WebProjects/DataStructureViewer"
@@ -114,8 +150,64 @@
 	"groups":
 	[
 		{
+			"selected": 1,
 			"sheets":
 			[
+				{
+					"buffer": 0,
+					"file": "index.html",
+					"settings":
+					{
+						"buffer_size": 1364,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								1024,
+								1024
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 159.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "js/slider.js",
+					"settings":
+					{
+						"buffer_size": 3123,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2552,
+								2552
+							]
+						],
+						"settings":
+						{
+							"spell_check": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				}
 			]
 		}
 	],
