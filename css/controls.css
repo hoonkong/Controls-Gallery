@@ -1,0 +1,17 @@
+svg.slider {
+	cursor: default;
+}
+
+svg.slider line {
+	stroke: black;
+	stroke-width: 2px;
+}
+
+svg.slider circle {
+	fill: red;
+}
+
+svg.slider text {
+	font-size: 15px;
+}
+

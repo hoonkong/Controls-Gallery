@@ -1,9 +1,11 @@
 var Slider;
 
 (function (Slider) {
-	var sliderTemplate = '<svg width="{width}" height="{height}">';
-	sliderTemplate += '<line x1="0" y1="{radius}" x2="{width}" y2="{radius}" stroke="black" stroke-width="2"/>';
-	sliderTemplate += '<circle cx="{start}" cy="{radius}" r="{radius}" style="fill:red;"></svg>';
+	var sliderTemplate = '<svg width="{width}" height="{height}" class="slider">';
+	sliderTemplate += '<line x1="0" y1="{radius}" x2="{width}" y2="{radius}" />';
+	sliderTemplate += '<circle cx="{start}" cy="{radius}" r="{radius}" />';
+	sliderTemplate += '<text x="0" y="{labelY}">Sample</text>';
+	sliderTemplate += '</svg>';
 
 	var createSliderControl = function (container) {
 		var label = container.getAttribute("data-label");
@@ -25,9 +27,10 @@ var Slider;
 
 		var renderControl = function () {
 			var svgTemplate = sliderTemplate.replace(/{width}/g, width)
-											.replace(/{height}/g, pointerRadius * 2)
+											.replace(/{height}/g, pointerRadius * 2 + 10)
 											.replace(/{start}/g, start)
-											.replace(/{radius}/g, pointerRadius);
+											.replace(/{radius}/g, pointerRadius)
+											.replace(/{labelY}/g, pointerRadius + 10);
 			container.innerHTML = svgTemplate;
 		};
 
