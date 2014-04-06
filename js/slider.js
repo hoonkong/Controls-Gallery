@@ -1,20 +1,26 @@
 var Slider;
 
 (function (Slider) {
-	var sliderTemplate = '<svg width="{width}" height="{height}" class="slider">';
-	sliderTemplate += '<line x1="0" y1="{radius}" x2="{width}" y2="{radius}" />';
+	var sliderTemplate = '<svg width="{svgWidth}" height="{height}" class="slider">';
+	sliderTemplate += '<line x1="{scaleBarPosX}" y1="{radius}" x2="{width}" y2="{radius}" />';
 	sliderTemplate += '<circle cx="{start}" cy="{radius}" r="{radius}" />';
-	sliderTemplate += '<text x="0" y="{labelY}">Sample</text>';
+	sliderTemplate += '<text x="0" y="{labelY}">{minVal}</text>';
+	sliderTemplate += '<text x="{labelX}" y="{labelY}">{maxVal}</text>';
 	sliderTemplate += '</svg>';
 
 	var createSliderControl = function (container) {
 		var label = container.getAttribute("data-label");
-		var minVal = container.getAttribute("data-min") || 0;
-		var maxVal = container.getAttribute("data-max") || 10;
-		var width = container.getAttribute("data-width") || 100;
-		var start = container.getAttribute("data-start") || 0;
+		var minVal = parseInt(container.getAttribute("data-min")) || 0;
+		var maxVal = parseInt(container.getAttribute("data-max")) || 10;
+		var width = parseInt(container.getAttribute("data-width")) || 100;
+		var start = parseInt(container.getAttribute("data-start")) || 0;
 		var options = container.getAttribute("data-options");
 		var pointerRadius = parseInt(container.getAttribute("data-pointerRadius")) || 6;
+
+		var svgWidth = width + pointerRadius;
+		var scaleBarPosX = pointerRadius;
+		var trueStart = start + pointerRadius;
+		var trueWidth = width - pointerRadius;
 
 		var handlerName = container.getAttribute("event:onslideend");
 		var slideEndCallback = Helper.parseCallbackFunction(handlerName);
@@ -26,11 +32,16 @@ var Slider;
 		var slideStartCallback = Helper.parseCallbackFunction(handlerName);
 
 		var renderControl = function () {
-			var svgTemplate = sliderTemplate.replace(/{width}/g, width)
+			var svgTemplate = sliderTemplate.replace(/{svgWidth}/g, svgWidth)
+											.replace(/{width}/g, width)
+											.replace(/{scaleBarPosX}/g, scaleBarPosX)
+											.replace(/{minVal}/g, minVal)
+											.replace(/{maxVal}/g, maxVal)
 											.replace(/{height}/g, pointerRadius * 2 + 10)
-											.replace(/{start}/g, start)
+											.replace(/{start}/g, trueStart)
 											.replace(/{radius}/g, pointerRadius)
-											.replace(/{labelY}/g, pointerRadius + 10);
+											.replace(/{labelY}/g, pointerRadius + 12)
+											.replace(/{labelX}/g, width - 13);
 			container.innerHTML = svgTemplate;
 		};
 
@@ -47,10 +58,10 @@ var Slider;
 				var startX = pointer.getAttribute("cx");
 				var dx = evt.pageX - parseInt(startX) - pointerRadius;
 				var truePosition = dx + parseInt(start);
-				if (truePosition >= 0 && truePosition <= width)
+				if (truePosition >= 0 && truePosition <= trueWidth)
 				{
 					pointer.setAttribute("transform", "translate(" + dx + ", 0)");
-					slideMoveCallback && slideMoveCallback();				
+					slideMoveCallback && slideMoveCallback(truePosition);				
 				}				
 			};
 
@@ -59,7 +70,7 @@ var Slider;
 				slideEndCallback && slideEndCallback();
 				document.removeEventListener("mousemove", mousemoveHandler);
 				document.removeEventListener("mouseup", mouseupHandler);
-			}
+			};
 
 			pointer.addEventListener("mousedown", mousedownHandler);			
 		};
