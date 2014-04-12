@@ -1,12 +1,14 @@
 var Slider;
 
 (function (Slider) {
-	var sliderTemplate = '<svg width="{svgWidth}" height="{height}" class="slider">';
+	var sliderTemplate = '<span class="sliderLabel">{minVal}</span>';
+	sliderTemplate += '<svg width="{svgWidth}" height="{height}" class="slider">';
 	sliderTemplate += '<line x1="{scaleBarPosX}" y1="{radius}" x2="{width}" y2="{radius}" />';
 	sliderTemplate += '<circle cx="{start}" cy="{radius}" r="{radius}" />';
-	sliderTemplate += '<text x="0" y="{labelY}">{minVal}</text>';
-	sliderTemplate += '<text x="{labelX}" y="{labelY}">{maxVal}</text>';
+	//sliderTemplate += '<text x="0" y="{labelY}">{minVal}</text>';
+	//sliderTemplate += '<text x="{labelX}" y="{labelY}">{maxVal}</text>';
 	sliderTemplate += '</svg>';
+	sliderTemplate += '<span class="sliderLabel">{maxVal}</span>';
 
 	var createSliderControl = function (container) {
 		var label = container.getAttribute("data-label");
@@ -37,7 +39,7 @@ var Slider;
 											.replace(/{scaleBarPosX}/g, scaleBarPosX)
 											.replace(/{minVal}/g, minVal)
 											.replace(/{maxVal}/g, maxVal)
-											.replace(/{height}/g, pointerRadius * 2 + 10)
+											.replace(/{height}/g, pointerRadius * 2)
 											.replace(/{start}/g, trueStart)
 											.replace(/{radius}/g, pointerRadius)
 											.replace(/{labelY}/g, pointerRadius + 12)

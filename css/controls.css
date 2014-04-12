@@ -11,10 +11,12 @@ svg.slider circle {
 	fill: red;
 }
 
-svg.slider text {
+span.sliderLabel {
 	font-size: 11px;
 	font-family: verdana;
 	user-select: none;
 	-webkit-user-select: none;
+	display: inline-block;
+	margin: 0 2px;
 }
 
