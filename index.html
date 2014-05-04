@@ -56,32 +56,34 @@
 
 		<input type="text" id="out1"/>
 
-		<div>
-			<select name="selectme" data-control="selector">
-				<option value="option_1">Option 1</option>
-				<option value="option_2">Option 2</option>
-				<option value="option_3">Option 3</option>
-				<option value="option_4">Option 4</option>
-				<option value="option_5">Option 5</option>
-				<option value="option_6">Option 6</option>
-				<option value="option_7">Option 7</option>
-			</select>
-		</div>
-
-		<div>
-			<select name="selectme" data-control="selector" multiple>
-				<option value="option_1">Option 1</option>
-				<option value="option_2">Option 2</option>
-				<option value="option_3">Option 3</option>
-				<option value="option_4">Option 4</option>
-				<option value="option_5">Option 5</option>
-				<option value="option_6">Option 6</option>
-				<option value="option_7">Option 7</option>
-			</select>
-		</div>
-
+		<form id="myFrom" method="post">
+			<div>
+				<select name="selectme" data-control="selector">
+					<option value="option_1">Option 1</option>
+					<option value="option_2">Option 2</option>
+					<option value="option_3">Option 3</option>
+					<option value="option_4">Option 4</option>
+					<option value="option_5">Option 5</option>
+					<option value="option_6">Option 6</option>
+					<option value="option_7">Option 7</option>
+				</select>
+			</div>
+			<div>
+				<select name="selectme1" data-control="selector" size="2" multiple>
+					<option value="option_1">Option 1</option>
+					<option value="option_2">Option 2</option>
+					<option value="option_3">Option 3</option>
+					<option value="option_4">Option 4</option>
+					<option value="option_5">Option 5</option>
+					<option value="option_6">Option 6</option>
+					<option value="option_7">Option 7</option>
+				</select>
+			</div>
+			<input type="submit" value="Go">
+		</form>
 		<script type="text/javascript" src="js/helper.js"></script>
 		<script type="text/javascript" src="js/slider.js"></script>
 		<script type="text/javascript" src="js/selector.js"></script>
+		<script type="text/javascript" src="js/formprocessor.js"></script>
 	</body>
 </html>
