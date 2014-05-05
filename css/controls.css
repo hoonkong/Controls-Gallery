@@ -1,3 +1,9 @@
+* {
+	padding: 0;
+	margin: 0;
+	list-style: none;
+}
+
 svg.slider {
 	cursor: default;
 }
@@ -20,3 +26,39 @@ span.sliderLabel {
 	margin: 0 2px;
 }
 
+ul.roller {
+	font-family: arial;
+}
+
+ul.roller li {
+	height: 12px;
+	margin-bottom: 7px;
+}
+
+ul.roller .rollback {
+	-webkit-transform: rotateX(60deg);
+	margin-bottom: 2px;
+}
+
+ul.roller .rollout {
+	-webkit-transform: rotateX(45deg);
+	margin-bottom: 4px;
+}
+
+ul.roller .rollaway {
+	-webkit-transform: rotateX(20deg);
+}
+
+ul.roller .rollnear {
+	-webkit-transform: rotateX(-20deg);
+	margin-bottom: 6px;
+}
+
+ul.roller .rollin {
+	-webkit-transform: rotateX(-45deg);
+	margin-bottom: 3px;
+}
+
+ul.roller .rollfront {
+	-webkit-transform: rotateX(-60deg);	
+}
