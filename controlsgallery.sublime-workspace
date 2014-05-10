@@ -4,24 +4,92 @@
 		"selected_items":
 		[
 			[
-				"poi",
-				"pointerRadius"
+				"get",
+				"getElementById"
 			],
 			[
-				"con",
-				"console"
+				"for",
+				"form"
 			],
 			[
-				"cal",
-				"callbackFunc"
+				"proc",
+				"processSelects"
+			],
+			[
+				"proces",
+				"processSubmit"
+			],
+			[
+				"form",
+				"formId"
+			],
+			[
+				"pro",
+				"processors"
+			],
+			[
+				"in",
+				"input	Tag"
+			],
+			[
+				"sel",
+				"select"
+			],
+			[
+				"mu",
+				"multiSelect"
+			],
+			[
+				"sele",
+				"selectorsOnPage"
 			],
 			[
 				"s",
-				"script	Tag"
+				"selectorsOnPage"
 			],
 			[
-				"get",
-				"getAttribute"
+				"op",
+				"option	Tag"
+			],
+			[
+				"sli",
+				"sliderTemplate"
+			],
+			[
+				"tr",
+				"trueStart"
+			],
+			[
+				"po",
+				"pointerRadius"
+			],
+			[
+				"font",
+				"font-family"
+			],
+			[
+				"a",
+				"default"
+			],
+			[
+				"fon",
+				"font-family"
+			],
+			[
+				"sta",
+				"startX"
+			],
+			[
+				"pinter",
+				"pointerRadius"
+			],
+			[
+				"pointer",
+				"pointerRadius"
+			],
+			[
+				"poi",
+				"pointerRadius"
 			],
 			[
 				"ac",
@@ -64,19 +132,46 @@
 	"buffers":
 	[
 		{
-			"file": "controlsgallery.sublime-project",
+			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 62,
+				"buffer_size": 2501,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/formprocessor.js",
+			"settings":
+			{
+				"buffer_size": 646,
+				"line_ending": "Unix",
+				"name": "var FormProcessor;"
+			}
+		},
+		{
+			"file": "js/selector.js",
+			"settings":
+			{
+				"buffer_size": 570,
+				"line_ending": "Unix",
+				"name": "var Selector;"
 			}
 		},
 		{
 			"file": "js/slider.js",
 			"settings":
 			{
-				"buffer_size": 3575,
+				"buffer_size": 3702,
 				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "css/controls.css",
+			"settings":
+			{
+				"buffer_size": 277,
+				"line_ending": "Unix",
+				"name": ".slider"
 			}
 		},
 		{
@@ -84,22 +179,6 @@
 			"settings":
 			{
 				"buffer_size": 1073,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "js/svg.js",
-			"settings":
-			{
-				"buffer_size": 90,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "index.html",
-			"settings":
-			{
-				"buffer_size": 1424,
 				"line_ending": "Unix"
 			}
 		}
@@ -137,7 +216,7 @@
 	],
 	"find":
 	{
-		"height": 0.0
+		"height": 35.0
 	},
 	"find_in_files":
 	{
@@ -152,9 +231,6 @@
 		"case_sensitive": false,
 		"find_history":
 		[
-			"pageX",
-			" >",
-			"\"/>\n",
 			"children"
 		],
 		"highlight": true,
@@ -173,28 +249,57 @@
 	"groups":
 	[
 		{
-			"selected": 4,
+			"selected": 1,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "controlsgallery.sublime-project",
+					"file": "index.html",
 					"settings":
 					{
-						"buffer_size": 62,
+						"buffer_size": 2501,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								44,
-								44
+								1777,
+								1777
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JSON.tmLanguage"
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 639.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 1,
+					"file": "js/formprocessor.js",
+					"settings":
+					{
+						"buffer_size": 646,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								276,
+								276
+							]
+						],
+						"settings":
+						{
+							"auto_name": "var FormProcessor;",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -203,51 +308,24 @@
 					"type": "text"
 				},
 				{
-					"buffer": 1,
-					"file": "js/slider.js",
-					"settings":
-					{
-						"buffer_size": 3575,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								0,
-								0
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
-							"translate_tabs_to_spaces": false
-						},
-						"translation.x": 0.0,
-						"translation.y": 3.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
 					"buffer": 2,
-					"file": "js/helper.js",
+					"file": "js/selector.js",
 					"settings":
 					{
-						"buffer_size": 1073,
+						"buffer_size": 570,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								872,
-								872
+								126,
+								126
 							]
 						],
 						"settings":
 						{
-							"auto_name": "",
+							"auto_name": "var Selector;",
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
@@ -259,23 +337,53 @@
 				},
 				{
 					"buffer": 3,
-					"file": "js/svg.js",
+					"file": "js/slider.js",
 					"settings":
 					{
-						"buffer_size": 90,
+						"buffer_size": 3702,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8,
-								8
+								3479,
+								3495
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/JavaScript/JavaScript.tmLanguage"
+							"spell_check": true,
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 819.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "css/controls.css",
+					"settings":
+					{
+						"buffer_size": 277,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								270,
+								270
+							]
+						],
+						"settings":
+						{
+							"auto_name": ".slider",
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -284,11 +392,11 @@
 					"type": "text"
 				},
 				{
-					"buffer": 4,
-					"file": "index.html",
+					"buffer": 5,
+					"file": "js/helper.js",
 					"settings":
 					{
-						"buffer_size": 1424,
+						"buffer_size": 1073,
 						"regions":
 						{
 						},
@@ -301,7 +409,7 @@
 						],
 						"settings":
 						{
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
@@ -319,7 +427,7 @@
 	},
 	"input":
 	{
-		"height": 0.0
+		"height": 31.0
 	},
 	"layout":
 	{

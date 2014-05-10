@@ -23,6 +23,40 @@ var FormProcessor;
 			console.log(formInfo);
 		}
 
+		var processRadioButtons = function (form) {
+			var inputs = form.querySelectorAll("input[type=radio]");
+			for (var i = 0; i < inputs.length; i++) {
+				if (inputs[i].checked)
+				{
+					formInfo[inputs[i].name] = inputs[i].value;
+					break;
+				}
+			}
+		}
+
+		var processCheckBoxes = function (form) {
+			var inputs = form.querySelectorAll("input[type=checkbox]");
+			var name;
+			for (var i = 0; i < inputs.length; i++) {
+				name = inputs[i].name;
+				if (!formInfo[name]) {
+					formInfo[name] = [];
+				}
+
+				if (inputs[i].checked)
+				{
+					formInfo[name].push(inputs[i].value);
+				}
+			}
+		}
+
+		var processInputBoxes = function (form) {
+			var inputs = form.querySelectorAll("input[type=text]");
+			for (var i = 0; i < inputs.length; i++) {
+				formInfo[inputs[i].name] = inputs[i].value;
+			}
+		}
+
 		var processSubmit = function (evtArgs) {
 			evtArgs.preventDefault();
 
